@@ -13,6 +13,8 @@ module "{{ component/stack }}" {
 
 See the full configuration options below.
 
+Once installed, you can test your installation with the [default Istio example](https://istio.io/latest/docs/setup/getting-started/#bookinfo).
+
 ## Known Issues
 
 - {{ Known Issue 1 }}
