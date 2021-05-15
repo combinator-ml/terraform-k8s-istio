@@ -1,13 +1,14 @@
-# terraform-{{ provider }}-{{ component/stack }}
+# terraform-k8s-istio
 
-{{ Insert brief overview here - this file will be injected into the README by the github action }}
+A combinator component that installs [Istio](https://istio.io).
 
 ## Usage
 
+Note that this installation includes limits, so you will need nodes big enough to fit istio, or have autoscaling enabled.
+
 ```terraform
-module "{{ component/stack }}" {
-  source  = "combinator-ml/{{ component/stack }}/{{ provider }}"
-  version = "0.0.0"
+module "istio" {
+  source  = "combinator-ml/istio/k8s"
 }
 ```
 
@@ -15,21 +16,18 @@ See the full configuration options below.
 
 Once installed, you can test your installation with the [default Istio example](https://istio.io/latest/docs/setup/getting-started/#bookinfo).
 
-## Known Issues
-
-- {{ Known Issue 1 }}
-  {{ Known Issue description }}
-- ...
-
 ## Requirements
 
-No requirements.
+| Name | Version |
+|------|---------|
+| provider | >= 2.0.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| kubernetes | n/a |
+| helm | n/a |
+| null | n/a |
 
 ## Modules
 
@@ -39,13 +37,16 @@ No Modules.
 
 | Name |
 |------|
-| [kubernetes_namespace](https://registry.terraform.io/providers/hashicorp/kubernetes/latest/docs/resources/namespace) |
+| [helm_release](https://registry.terraform.io/providers/hashicorp/helm/latest/docs/resources/release) |
+| [null_resource](https://registry.terraform.io/providers/hashicorp/null/latest/docs/resources/resource) |
 
 ## Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| namespace | The namespace to install into. | `string` | `"default"` | no |
+| enable\_default\_control\_plane | Whether to install a default control plane | `bool` | `true` | no |
+| name\_prefix | Prefix to be used when installing. | `string` | `"combinator"` | no |
+| namespace | The namespace to install into. | `string` | `"istio-system"` | no |
 
 ## Outputs
 
