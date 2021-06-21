@@ -31,6 +31,7 @@ resource "helm_release" "base" {
   wait             = true
   create_namespace = true
   lint             = true
+  values           = var.base_values
   depends_on = [
     null_resource.extract_istio
   ]
@@ -44,6 +45,7 @@ resource "helm_release" "istio-discovery" {
   wait             = true
   create_namespace = true
   lint             = true
+  values           = var.discovery_values
   depends_on = [
     null_resource.extract_istio, helm_release.base
   ]
@@ -57,6 +59,7 @@ resource "helm_release" "istio-ingress" {
   wait             = true
   create_namespace = true
   lint             = true
+  values           = var.ingress_values
   depends_on = [
     null_resource.extract_istio, helm_release.istio-discovery
   ]
