@@ -44,7 +44,10 @@ No Modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| base\_values | Istio base Helm values | `list(string)` | `[]` | no |
+| discovery\_values | Istio discovery Helm values | `list(string)` | `[]` | no |
 | enable\_default\_control\_plane | Whether to install a default control plane | `bool` | `true` | no |
+| ingress\_values | Istio ingress Helm values | `list(string)` | `[]` | no |
 | name\_prefix | Prefix to be used when installing. | `string` | `"combinator"` | no |
 | namespace | The namespace to install into. | `string` | `"istio-system"` | no |
 
