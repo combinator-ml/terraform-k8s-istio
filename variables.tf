@@ -15,3 +15,21 @@ variable "enable_default_control_plane" {
   default     = true
   type        = bool
 }
+
+variable "base_values" {
+  description = "Istio base Helm values"
+  default     = []
+  type        = list(string)
+}
+
+variable "discovery_values" {
+  description = "Istio discovery Helm values"
+  default     = []
+  type        = list(string)
+}
+
+variable "ingress_values" {
+  description = "Istio ingress Helm values"
+  default     = []
+  type        = list(string)
+}
